@@ -11,6 +11,7 @@ import CreateGarnish from "./components/Create/CreateGarnish";
 import CreateEquipment from "./components/Create/CreateEquipment";
 import CreateIngredient from "./components/Create/CreateIngredient";
 import CreateCocktail from "./components/Create/CreateCocktail";
+import CocktailList from "./components/ViewLists/CocktailList";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/cocktails" element={<CocktailList />} />
         <Route path="/cocktail/:id" element={<CocktailDetails />} />
 
         <Route path="/ingredients" element={<IngredientList />} />

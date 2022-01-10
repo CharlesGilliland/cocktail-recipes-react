@@ -2,8 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+import InstructionList from "./InstructionList";
 
-const AddInstruction = () => {
+const AddInstruction = (props) => {
   const ingredientsUrl =
     "http://" + process.env.REACT_APP_API_IP + ":8080/ingredient/getAll";
   const equipmentUrl =
@@ -13,38 +15,26 @@ const AddInstruction = () => {
   const garnishUrl =
     "http://" + process.env.REACT_APP_API_IP + ":8080/garnish/getAll";
 
-  const [instruction, setInstruction] = useState({
-    ingredients: [],
-    equipment: [],
-    glasses: [],
-    garnish: [],
-    description: "",
-  });
-
-  const handleInstructionChange = (evn) => {
-    setInstruction({ ...instruction, [evn.target.name]: evn.target.value });
+  const handleDescriptionChange = (evn) => {
+    setDescription(evn.target.value);
   };
 
-  useEffect(() => {
-    setInstruction({
-      ingredients: { selectedIngredients },
-      equipment: { selectedEquipment },
-      glasses: { selectedGlasses },
-      garnish: { selectedGarnish },
-    });
-  });
+  const [instruction, setInstruction] = useState("");
+  const [instructions, setInstructions] = useState([]);
+
+  const [description, setDescription] = useState("");
 
   const [ingredientsFromDb, setIngredientsFromDb] = useState([]);
-  const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
 
   const [equipmentFromDb, setEquipmentFromDb] = useState([]);
-  const [selectedEquipment, setSelectedEquipment] = useState([]);
+  const [equipment, setEquipment] = useState([]);
 
   const [glassesFromDb, setGlassesFromDb] = useState([]);
-  const [selectedGlasses, setSelectedGlasses] = useState([]);
+  const [glasses, setGlasses] = useState([]);
 
   const [garnishFromDb, setGarnishFromDb] = useState([]);
-  const [selectedGarnish, setSelectedGarnish] = useState([]);
+  const [garnish, setGarnish] = useState([]);
 
   useEffect(() => {
     axios.get(ingredientsUrl).then((response) => {
@@ -69,59 +59,88 @@ const AddInstruction = () => {
     });
   }, []);
 
-  const show = (evn) => {
-    alert(JSON.stringify(instruction));
+  useEffect(() => {
+    setInstruction(
+      `{"ingredients":${JSON.stringify(
+        ingredients
+      )},"equipment":${JSON.stringify(equipment)},"glasses":${JSON.stringify(
+        glasses
+      )},"garnish":${JSON.stringify(garnish)},"description":${JSON.stringify(
+        description
+      )}}`
+    );
+  });
+
+  const AddNewInstruction = (e) => {
+    e.preventDefault();
+    setInstructions([...instructions, JSON.parse(instruction)]);
+  };
+
+  const setParent = (e) => {
+    e.preventDefault();
+    props.fullInstructions(instructions);
   };
 
   return (
     <div className="instruction-form-container">
-      <h4>Add Instruction</h4>
+      <InstructionList instructions={instructions} />
+      <h4 className="align-center">Instructions</h4>
       <label for="instructionDescription" className="form-label">
         Description
       </label>
       <input
-        value={instruction.description}
+        value={description}
         type="text"
         name="description"
         className="form-control"
         id="instructionDescription"
-        onChange={handleInstructionChange}
+        onChange={handleDescriptionChange}
       />
 
       <Select
+        className="mt-3"
         options={glassesFromDb}
         placeholder="Select Glass"
         getOptionLabel={(option) => option.type}
         getOptionValue={(option) => option}
-        onChange={setSelectedGlasses}
+        onChange={setGlasses}
         isMulti
       />
       <Select
+        className="mt-3"
         options={ingredientsFromDb}
         placeholder="Select Ingredients"
         getOptionLabel={(option) => option.name}
         getOptionValue={(option) => option}
-        onChange={setSelectedIngredients}
+        onChange={setIngredients}
         isMulti
       />
       <Select
+        className="mt-3"
         options={equipmentFromDb}
         placeholder="Select Equipment"
         getOptionLabel={(option) => option.name}
         getOptionValue={(option) => option}
-        onChange={setSelectedEquipment}
+        onChange={setEquipment}
         isMulti
       />
       <Select
+        className="mt-3 mb-3"
         options={garnishFromDb}
         placeholder="Select Garnish"
         getOptionLabel={(option) => option.type}
         getOptionValue={(option) => option}
-        onChange={setSelectedGarnish}
+        onChange={setGarnish}
         isMulti
       />
 
-      <button onClick={show}>Show all selected arrays</button>
+      <button className="btn btn-dark" onClick={AddNewInstruction}>
+        Add Instruction
+      </button>
+
+      <button className="btn btn-dark m-3 " onClick={setParent}>
+        Confirm Instructions
+      </button>
     </div>
   );
 };

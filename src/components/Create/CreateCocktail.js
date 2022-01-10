@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import AddInstruction from "./AddInstruction";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 
 const CreateCocktail = () => {
   const url =
@@ -16,12 +17,16 @@ const CreateCocktail = () => {
     noOfSteps: 0,
   });
 
+  const [storedInstructions, setStoredInstructions] = useState([]);
+
 
   const handleChange = (evn) => {
     setCocktail({ ...cocktail, [evn.target.name]: evn.target.value });
   };
 
   const submit = (evn) => {
+    evn.preventDefault();
+    cocktail.instructions = storedInstructions;
     axios
       .post(url, {
         instructions: cocktail.instructions,
@@ -53,9 +58,23 @@ const CreateCocktail = () => {
             />
           </div>
 
-          <AddInstruction />
+          <AddInstruction fullInstructions={storedInstructions => setStoredInstructions(storedInstructions)}/>
 
-          <button type="submit" className="btn btn-primary">
+          <div className="mb-3">
+            <label for="cocktailDescriptionInput" className="form-label">
+              Description
+            </label>
+            <textarea
+              value={cocktail.description}
+              type="textbox"
+              name="description"
+              className="form-control"
+              id="cocktailDescriptionInput"
+              onChange={handleChange}
+            />
+          </div>
+
+          <button type="submit" className="btn btn-dark">
             Create
           </button>
         </form>

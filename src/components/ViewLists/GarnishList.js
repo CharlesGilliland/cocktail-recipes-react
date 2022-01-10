@@ -9,25 +9,34 @@ const GarnishList = () => {
   const [garnish, setGarnish] = useState([]);
 
   useEffect(() => {
-    axios.get(url).then(response => {
+    axios.get(url).then((response) => {
       setGarnish(response.data);
     });
   }, []);
 
-
   function search(rows) {
-    return rows.filter((row) => row.type.toLowerCase().indexOf(q.toLowerCase()) > -1);
+    return rows.filter(
+      (row) => row.type.toLowerCase().indexOf(q.toLowerCase()) > -1
+    );
   }
 
   return (
     <div className="contentContainer">
-    <h2>Garnish</h2>
-      <div>
-        <p>
-          Search:
-          <input type="text" value={q} onChange={(e) => setQ(e.target.value)} />
-        </p>
+      <div className="listTopDiv">
+        <h2 className="listHeading">Garnish</h2>
+        <div className="searchBar">
+          <p className="searchText">
+            Search:
+            <input
+              className="searchInput"
+              type="text"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
+          </p>
+        </div>
       </div>
+
       <div>
         <Datatable data={search(garnish)} />
       </div>

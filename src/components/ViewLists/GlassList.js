@@ -9,24 +9,34 @@ const GlassList = () => {
   const [glasses, setGlasses] = useState([]);
 
   useEffect(() => {
-    axios.get(url).then(response => {
+    axios.get(url).then((response) => {
       setGlasses(response.data);
     });
   }, []);
 
   function search(rows) {
-    return rows.filter((row) => row.type.toLowerCase().indexOf(q.toLowerCase()) > -1);
+    return rows.filter(
+      (row) => row.type.toLowerCase().indexOf(q.toLowerCase()) > -1
+    );
   }
 
   return (
     <div className="contentContainer">
-    <h2>Glasses</h2>
-      <div>
-        <p>
-          Search:
-          <input type="text" value={q} onChange={(e) => setQ(e.target.value)} />
-        </p>
+      <div className="listTopDiv">
+        <h2 className="listHeading">Glasses</h2>
+        <div>
+          <p className="searchText">
+            Search:
+            <input
+              className="searchInput"
+              type="text"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
+          </p>
+        </div>
       </div>
+
       <div>
         <Datatable data={search(glasses)} />
       </div>

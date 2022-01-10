@@ -13,7 +13,7 @@ const CocktailList = () => {
     });
   }, []);
 
-  if(!cocktails) return <h1>Loading Cocktails...</h1>;
+  if(!cocktails) return <div className="contentContainer"><h1>Loading Cocktails...</h1></div>;
 
 
   const COCKTAIL = [
@@ -78,7 +78,7 @@ const CocktailList = () => {
   ];
 
   return (
-    <div>
+    <div className="contentContainer">
       {cocktails.map((cocktail) => (
         <CocktailCard cocktail={cocktail} />
       ))}
