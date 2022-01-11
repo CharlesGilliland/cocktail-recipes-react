@@ -98,6 +98,7 @@ const AddInstruction = (props) => {
       />
 
       <Select
+        id="glassSelect"
         className="mt-3"
         options={glassesFromDb}
         placeholder="Select Glass"
@@ -107,6 +108,7 @@ const AddInstruction = (props) => {
         isMulti
       />
       <Select
+        id="ingredientsSelect"
         className="mt-3"
         options={ingredientsFromDb}
         placeholder="Select Ingredients"
@@ -116,6 +118,7 @@ const AddInstruction = (props) => {
         isMulti
       />
       <Select
+        id="equipmentSelect"
         className="mt-3"
         options={equipmentFromDb}
         placeholder="Select Equipment"
@@ -125,6 +128,7 @@ const AddInstruction = (props) => {
         isMulti
       />
       <Select
+        id="garnishSelect"
         className="mt-3 mb-3"
         options={garnishFromDb}
         placeholder="Select Garnish"
