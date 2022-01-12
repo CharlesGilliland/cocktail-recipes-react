@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const CreateGlass = () => {
@@ -9,6 +10,13 @@ const CreateGlass = () => {
     type: "",
     volume: 0,
   });
+
+  const navigate = useNavigate();
+
+  const backToGlass = () => {
+    const path = '/glass';
+    navigate(path);
+  }
 
   const submit = (e) => {
     e.preventDefault();
@@ -20,6 +28,7 @@ const CreateGlass = () => {
       .then((response) => {
         console.log(response.status);
       });
+    backToGlass();  
   };
 
   const handleChange = (evn) => {

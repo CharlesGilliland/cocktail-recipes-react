@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const CreateIngredient = () => {
@@ -18,6 +19,13 @@ const CreateIngredient = () => {
     setIngredient({ ...ingredient, [evn.target.name]: evn.target.value });
   };
 
+  const navigate = useNavigate();
+
+  const backToIngredient = () => {
+    const path = '/ingredients';
+    navigate(path);
+  }
+
   const submit = (evn) => {
     evn.preventDefault();
     axios.post(url, {
@@ -29,6 +37,7 @@ const CreateIngredient = () => {
     }). then(response => {
         console.log(response.status);
     });
+    backToIngredient();
   };
 
   return (

@@ -28,7 +28,7 @@ const CocktailDetails = (props) => {
   const navigate = useNavigate();
 
   const backToCocktail = () => {
-    let path = "/cocktails";
+    const path = "/cocktails";
     navigate(path);
   };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const CreateGarnish = () => {
@@ -15,6 +16,13 @@ const CreateGarnish = () => {
     setGarnish({ ...garnish, [evn.target.name]: evn.target.value });
   };
 
+  const navigate = useNavigate();
+
+  const backToGarnish = () => {
+    const path = '/garnish';
+    navigate(path);
+  }
+
   const submit = (evn) => {
       evn.preventDefault();
       axios.post(url, {
@@ -23,6 +31,7 @@ const CreateGarnish = () => {
       }).then(response => {
           console.log(response.status);
       });
+      backToGarnish();
   };
 
   return (

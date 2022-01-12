@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateEquipment = () => {
   const url =
@@ -19,6 +20,13 @@ const CreateEquipment = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const backToEquipment = () => {
+    const path = '/equipment';
+    navigate(path);
+  }
+
   const submit = (env) => {
     env.preventDefault();
     axios
@@ -29,6 +37,7 @@ const CreateEquipment = () => {
       .then((response) => {
         console.log(response.status);
       });
+    backToEquipment();
   };
 
   return (
