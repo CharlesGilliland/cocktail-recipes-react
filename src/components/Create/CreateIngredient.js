@@ -10,7 +10,7 @@ const CreateIngredient = () => {
   const [ingredient, setIngredient] = useState({
     name: "",
     type: "",
-    abv: 0,
+    abv: 0.0,
     storage: "",
     description: "",
   });
@@ -78,6 +78,7 @@ const CreateIngredient = () => {
           <input
             value={ingredient.abv}
             type="number"
+            step="0.1"
             min="0"
             max="100"
             name="abv"
