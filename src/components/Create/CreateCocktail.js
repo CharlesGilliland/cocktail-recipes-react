@@ -74,7 +74,7 @@ const CreateCocktail = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-dark">
+          <button id="createCocktailButton" type="submit" className="btn btn-dark">
             Create
           </button>
         </form>

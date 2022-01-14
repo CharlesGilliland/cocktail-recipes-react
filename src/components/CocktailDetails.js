@@ -60,7 +60,7 @@ const CocktailDetails = (props) => {
       </div>
 
       <div className="d-flex justify-content-center">
-        <Button variant="danger" onClick={deleteCocktail}>
+        <Button id="deleteCocktailButton" variant="danger" onClick={deleteCocktail}>
           Delete Cocktail
         </Button>
       </div>

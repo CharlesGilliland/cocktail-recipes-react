@@ -8,21 +8,21 @@ const Navigation = () => {
         <Navbar.Brand href="/">Nice Cocktail</Navbar.Brand>
 
         <Nav className="me-auto">
-          <NavDropdown title="View">
+          <NavDropdown id="viewNavDropdown" title="View">
             <NavLink href="/cocktails"><span className="darkText">Cocktails</span></NavLink>
             <NavDropdown.Divider/>
-            <NavLink href="/equipment"><span className="darkText">Equipment</span></NavLink>
-            <NavLink href="/ingredients"><span className="darkText">Ingredients</span></NavLink>
-            <NavLink href="/garnish"><span className="darkText">Garnish</span></NavLink>
-            <NavLink href="/glasses"><span className="darkText">Glass</span></NavLink>
+            <NavLink id="equipmentNav" href="/equipment"><span className="darkText">Equipment</span></NavLink>
+            <NavLink id="ingredientsNav" href="/ingredients"><span className="darkText">Ingredients</span></NavLink>
+            <NavLink id="garnishNav" href="/garnish"><span className="darkText">Garnish</span></NavLink>
+            <NavLink id="glassNav" href="/glasses"><span className="darkText">Glass</span></NavLink>
           </NavDropdown>
-          <NavDropdown title="Create">
+          <NavDropdown id="createNavDropdown" title="Create">
             <NavLink href="/createCocktail"><span className="darkText">Cocktails</span></NavLink>
             <NavDropdown.Divider/>
-            <NavLink href="/createEquipment"><span className="darkText">Equipment</span></NavLink>
-            <NavLink href="/createIngredient"><span className="darkText">Ingredients</span></NavLink>
-            <NavLink href="/createGarnish"><span className="darkText">Garnish</span></NavLink>
-            <NavLink href="/createGlass"><span className="darkText">Glass</span></NavLink>
+            <NavLink id="createEquipmentNav" href="/createEquipment"><span className="darkText">Equipment</span></NavLink>
+            <NavLink id="createIngredientNav" href="/createIngredient"><span className="darkText">Ingredients</span></NavLink>
+            <NavLink id="createGarnishNav" href="/createGarnish"><span className="darkText">Garnish</span></NavLink>
+            <NavLink id="createGlassNav" href="/createGlass"><span className="darkText">Glass</span></NavLink>
           </NavDropdown>
         </Nav>
       </Container>

@@ -93,7 +93,7 @@ const AddInstruction = (props) => {
         type="text"
         name="description"
         className="form-control"
-        id="instructionDescription"
+        id="instructionDescriptionInput"
         onChange={handleDescriptionChange}
       />
 
@@ -138,11 +138,11 @@ const AddInstruction = (props) => {
         isMulti
       />
 
-      <button className="btn btn-dark" onClick={AddNewInstruction}>
+      <button id="addInstructionButton" className="btn btn-dark" onClick={AddNewInstruction}>
         Add Instruction
       </button>
 
-      <button className="btn btn-dark m-3 " onClick={setParent}>
+      <button id="confirmInstructionsButton" className="btn btn-dark m-3 " onClick={setParent}>
         Confirm Instructions
       </button>
     </div>

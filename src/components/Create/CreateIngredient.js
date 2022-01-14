@@ -113,7 +113,7 @@ const CreateIngredient = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button id="createIngredientButton" type="submit" className="btn btn-primary">
           Create
         </button>
       </form>

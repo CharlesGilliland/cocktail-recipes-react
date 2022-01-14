@@ -64,14 +64,14 @@ const CreateEquipment = () => {
               type="checkbox"
               name="isPowered"
               className="form-check-input"
-              id="garnishStorageInput"
+              id="equipmentPowerCheck"
               onChange={handleChange}
             />
-            <label for="garnishStorageInput" className="form-check-label">
+            <label for="equipmentPowerCheck" className="form-check-label">
               Requires Power
             </label>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button id="createEquipmentButton" type="submit" className="btn btn-primary">
             Create
           </button>
         </form>

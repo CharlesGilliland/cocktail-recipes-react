@@ -65,7 +65,7 @@ const CreateGarnish = () => {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button id="createGarnishButton" type="submit" className="btn btn-primary">
             Create
           </button>
         </form>

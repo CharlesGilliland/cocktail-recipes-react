@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CocktailCard = ({ cocktail }) => {
   return (
-    <Link to={`/cocktail/${cocktail.id}`} className="cocktailLink">
+    <Link id={`cocktailCard${cocktail.id}`} to={`/cocktail/${cocktail.id}`} className="cocktailLink">
       <div className="card cocktailCard mb-4">
         <h5 className="card-header cocktailCardHeader">Rating: </h5>
         <div className="card-body">

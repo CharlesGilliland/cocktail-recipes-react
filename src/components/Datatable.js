@@ -23,7 +23,7 @@ const Datatable = ({ data }) => {
       </thead>
       <tbody>
         {data.map((row) => (
-          <tr>
+          <tr id={``}>
             {columns.map((column) => (
               <td>{display(row, column)}</td>
             ))}

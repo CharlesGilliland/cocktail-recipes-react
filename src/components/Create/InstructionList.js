@@ -6,7 +6,7 @@ const InstructionList = ({ instructions }) => {
     <div>
       <ListGroup>
           {instructions.map((i) => 
-            <ListGroupItem>{i.description}</ListGroupItem>
+            <ListGroupItem id={i.id}>{i.description}</ListGroupItem>
           )}
       </ListGroup>
     </div>

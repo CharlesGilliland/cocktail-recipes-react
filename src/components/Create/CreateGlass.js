@@ -66,7 +66,7 @@ const CreateGlass = () => {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button id="createGlassButton" type="submit" className="btn btn-primary">
             Create
           </button>
         </form>
